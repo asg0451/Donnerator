@@ -1,8 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'pry'
-
-
 module Donnerisms
   class Isms
     attr_reader :isms
@@ -16,10 +13,3 @@ module Donnerisms
     end
   end
 end
-
-#binding.pry
-
-# d = Donnerisms::Isms.new
-# d.isms.each do |l|
-#   puts l
-# end
