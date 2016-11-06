@@ -27,18 +27,17 @@ module Donnerator
         tokens = tokenize(i)
         until tokens.empty?
           token = tokens.pop
-          markov_state = [tokens[-2], tokens[-1]]
+          markov_state = tokens[-1] #[tokens[-2], tokens[-1]]
           @markov[markov_state] << token
         end
       end
     end
 
     def random_donnerism(min_length: 2, max_length: 12)
-      tokens = @markov.keys.sample  # start at random token
+      tokens = [@markov.keys.sample]  # start at random token
       until sentence_complete?(tokens, min_length, max_length)
-        markov_state = [tokens[-2], tokens[-1]]
+        markov_state = tokens[-1]
         tokens << @markov[markov_state].sample
-#        binding.pry
       end
       replace_words(tokens)
     end
